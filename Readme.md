@@ -20,9 +20,9 @@ A simple script that displays a laser pointer on the screen based on the mouse c
 
 ## Usage
 
-1. Set the monitor dropdown option to the audience-view monitor.
-2. Press "F9", then click and drag to draw a box around the preview area, or press "Esc" to cancel.
-3. Press "R Alt" to display laser pointer, and press "R Alt" again to hide.
-4. The laser pointer size can be adjusted within the dialog box, with a precision of 0.1 and a range 0.5 ~ 5.
-5. It can be minimized to sidebar and continue running in the background.
-5. A customized pointer icon can be achieved by placing an `.ico` or `.png` file in the directory where the program or Python script is located. Recommended size is 46×46 pixels.
+- Set the monitor dropdown option to the audience-view monitor.
+- Press "F9", then click and drag to draw a box around the preview area, or press "Esc" to cancel.
+- Press "R Alt" to display laser pointer, and press "R Alt" again to hide.
+- The laser pointer size can be adjusted within the dialog box, with a precision of 0.1 and a range 0.5 ~ 5.
+- It can be minimized to sidebar and continue running in the background.
+- A customized pointer icon can be achieved by placing an `.ico` or `.png` file in the directory where the program or Python script is located. Recommended size is 46×46 pixels.
