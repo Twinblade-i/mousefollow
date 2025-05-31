@@ -16,7 +16,7 @@ A simple script that displays a laser pointer on the screen based on the mouse c
 2. Install essential packages: `pip install -r requirements.txt`
 3.  Run the Python file directly or use PyInstaller to package it into an executable file.
    - run directly: `python3 MouseFollow.py`
-   - package: `pyinstaller MouseLaser.spec`/`pyinstaller --onefile --windowed MouseFollow.py`
+   - package: `pyinstaller MouseFollow.spec`/`pyinstaller --onefile --windowed MouseFollow.py`
 
 ## Usage
 
