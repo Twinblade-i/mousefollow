@@ -7,7 +7,7 @@ A simple script that displays a laser pointer on the screen based on the mouse c
 ## changes
 
 - Add a feature to adjust the size of the pointer within the dialog box.
-- Add a feature to minimize it to the system tray.
+- Add a feature to allow it running in the background.
 - Adjust the direction of `settings.ini` to `~/.config/mousefollow/settings.ini` .
 
 ## Build
