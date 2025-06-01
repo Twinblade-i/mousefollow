@@ -162,6 +162,7 @@ class Master(QtWidgets.QDialog):
             "preview_right: " + str(self.preview_right),
             "preview_top: " + str(self.preview_top),
             "preview_bottom: " + str(self.preview_bottom),
+            "dot_scale: " + str(self.size_spin.value()),
         ]
         with open(self.config_path, "w") as f:
             f.write("\n".join(vals))
@@ -184,6 +185,7 @@ class Master(QtWidgets.QDialog):
                 "preview_right": "1258",
                 "preview_top": "149",
                 "preview_bottom": "823",
+                "dot_scale": "1.7",
             }
 
             if len(self.screens) > 1:
@@ -194,6 +196,7 @@ class Master(QtWidgets.QDialog):
         self.preview_right = int(self.settings["preview_right"])
         self.preview_top = int(self.settings["preview_top"])
         self.preview_bottom = int(self.settings["preview_bottom"])
+        self.dot_scale = float(self.settings.get("dot_scale", 1.7))
 
     def setupUI(self):
         self.load_ini()
@@ -235,7 +238,7 @@ class Master(QtWidgets.QDialog):
         self.size_spin = QtWidgets.QDoubleSpinBox()
         self.size_spin.setRange(0.5, 5.0)
         self.size_spin.setSingleStep(0.1)
-        self.size_spin.setValue(1.7)
+        self.size_spin.setValue(self.dot_scale)
         self.size_spin.valueChanged.connect(self.change_dot_size)
         self.size_layout.addWidget(self.size_label)
         self.size_layout.addWidget(self.size_spin)
@@ -248,12 +251,21 @@ class Master(QtWidgets.QDialog):
         self.v_layout.addWidget(self.laser_label)
 
         self.red_dot = RedDot()
+        self.red_dot.set_scale_factor(self.dot_scale)
         self.draw_box = DrawBox()
         self.draw_box.mouseup.connect(self.save_preview_pos)
 
         self.thread = Mover()
         self.thread.signal.connect(self.move_dot)
         self.thread.start()
+
+        # an Exit Button
+        self.button_layout = QtWidgets.QHBoxLayout()
+        self.button_layout.addStretch()
+        self.exit_btn = QtWidgets.QPushButton("Exit")
+        self.exit_btn.clicked.connect(QtWidgets.qApp.quit)
+        self.button_layout.addWidget(self.exit_btn)
+        self.v_layout.addLayout(self.button_layout)
 
         self.resize(300, 130)
         self.show()
@@ -268,6 +280,7 @@ class Master(QtWidgets.QDialog):
         if was_visible:
             self.laser_visible = True
             self.handle_key_events()
+        self.save_ini()
 
     def set_target_monitor(self):
         self.target_monitor = self.target_monitor_cb.currentText()
