@@ -2,7 +2,7 @@
 
 A simple script that displays a laser pointer on the screen based on the mouse cursor position.
 
-- forked from：https://github.com/doakey3/impress_mousefollow
+- forked from: https://github.com/doakey3/impress_mousefollow
 
 ## changes
 
